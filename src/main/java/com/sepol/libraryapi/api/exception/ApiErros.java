@@ -1,23 +1,27 @@
 package com.sepol.libraryapi.api.exception;
 
-import com.sepol.libraryapi.exception.BussinessException;
+import com.sepol.libraryapi.exception.BusinessException;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiErrors {
-
+public class ApiErros {
     private List<String> errors;
 
-    public ApiErrors(BindingResult bindingResult) {
+    public ApiErros(BindingResult bindingResult) {
         this.errors = new ArrayList<>();
         bindingResult.getAllErrors().forEach( error -> this.errors.add(error.getDefaultMessage())  );
     }
 
-    public ApiErrors(BussinessException ex) {
+    public ApiErros(BusinessException ex) {
         this.errors = Arrays.asList(ex.getMessage());
+    }
+
+    public ApiErros(ResponseStatusException ex) {
+        this.errors = Arrays.asList(ex.getReason());
     }
 
     public List<String> getErrors() {

@@ -16,10 +16,16 @@ import javax.persistence.*;
 public class Book {
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String author;
-    private String isbn;
 
+    @Column
+    private String title;
+
+    @Column
+    private String author;
+
+    @Column
+    private String isbn;
 }
