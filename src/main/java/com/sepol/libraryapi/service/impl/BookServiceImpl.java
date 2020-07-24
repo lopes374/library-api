@@ -1,5 +1,6 @@
 package com.sepol.libraryapi.service.impl;
 
+import com.fasterxml.jackson.databind.node.FloatNode;
 import com.sepol.libraryapi.exception.BusinessException;
 import com.sepol.libraryapi.model.entity.Book;
 import com.sepol.libraryapi.model.repository.BookRepository;
@@ -62,7 +63,7 @@ public class BookServiceImpl implements com.sepol.libraryapi.service.BookService
 
     @Override
     public Optional<Book> getBookByIsbn(String isbn) {
-        return null;
+        return repository.findByIsbn(isbn);
     }
 
 }

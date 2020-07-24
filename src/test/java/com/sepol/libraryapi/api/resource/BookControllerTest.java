@@ -232,7 +232,7 @@ public class BookControllerTest {
 
     @Test
     @DisplayName("Deve filtrar livros")
-    public void findBooksTest() throws Exception {
+    public void findLoansTest() throws Exception {
 
         Long id = 1l;
 
@@ -250,7 +250,8 @@ public class BookControllerTest {
                 book.getTitle(), book.getAuthor());
 
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get(BOOK_API.concat(queryString));
+                .get(BOOK_API.concat(queryString))
+                .accept(MediaType.APPLICATION_JSON);
 
         mvc.perform(requestBuilder)
                 .andExpect( status().isOk())
